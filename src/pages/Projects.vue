@@ -6,27 +6,25 @@ import Filter from "../components/icons/Filter.vue";
 import Reset from "../components/icons/Reset.vue";
 import ProjectCardVue from "../components/ProjectCard.vue";
 import { ref } from "vue";
-// create fake data for ProjectCard use a for loop
+import { gen } from "../utils/images";
 
-const gen = () => {
-    return Math.floor(Math.random() * 100) + 100;
+const get_random_user_pfp = () => {
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const randomIndexOne = Math.floor(Math.random() * letters.length);
+    const randomIndexTwo = Math.floor(Math.random() * letters.length);
+    return `https://ui-avatars.com/api/?name=${letters[randomIndexOne]}+${letters[randomIndexTwo]}`;
 };
 
 const projectCardData = ref([]);
 for (let i = 0; i < 4; i++) {
+    const name = faker.company.name();
     projectCardData.value.push({
-        main_img: "https://placewaifu.com/image/" + gen(),
-        address_title: faker.company.name(),
+        main_img: gen(),
+        address_title: name,
         address_subtitle: faker.location.streetAddress(),
         last_updated: faker.date.recent().toLocaleString(),
-        image_links: Array.from(
-            { length: 4 },
-            () => "https://placewaifu.com/image/" + gen()
-        ),
-        recent_users: Array.from(
-            { length: 2 },
-            () => "https://placewaifu.com/image/" + gen()
-        ),
+        image_links: Array.from({ length: 4 }, gen),
+        recent_users: Array.from({ length: 2 }, get_random_user_pfp),
     });
 }
 </script>

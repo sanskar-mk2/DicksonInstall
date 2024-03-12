@@ -2,28 +2,23 @@
 import { faker } from "@faker-js/faker/locale/en";
 import Add from "../components/icons/Add.vue";
 import SearchBar from "../components/SearchBar.vue";
-import Filter from "../components/icons/Filter.vue";
-import Reset from "../components/icons/Reset.vue";
-import ProjectCardVue from "../components/ProjectCard.vue";
 import ArrowDown from "../components/icons/ArrowDown.vue";
 import Dots from "../components/icons/Dots.vue";
 import { ref } from "vue";
 import Clock from "../components/icons/Clock.vue";
-// create fake data for ProjectCard use a for loop
-
-const gen = () => {
-    // generate a number between 100 and 1000
-    return Math.floor(Math.random() * 100) + 100;
-};
+import { gen } from "../utils/images";
 
 const projectCardData = ref([]);
 const possible_roles = ["Admin", "Standard", "Manager", "Restricted"];
 for (let i = 0; i < 4; i++) {
+    const name = faker.person.fullName();
+    const first_letter = name.split(" ")[0][0];
+    const second_letter = name.split(" ")[1][0];
     projectCardData.value.push({
-        user_image: "https://placewaifu.com/image/" + gen(),
-        user_name: faker.person.fullName(),
+        user_image: `https://ui-avatars.com/api/?name=${first_letter}+${second_letter}`,
+        user_name: name,
         role: possible_roles[Math.floor(Math.random() * possible_roles.length)],
-        email: faker.internet.email(),
+        email: faker.internet.email(name.split(" ")[0], name.split(" ")[1]),
         phone: faker.phone.number(),
     });
 }

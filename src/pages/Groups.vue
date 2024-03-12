@@ -1,14 +1,9 @@
 <script setup>
-import ArrowDown from "../components/icons/ArrowDown.vue";
 import SearchBar from "../components/SearchBar.vue";
 import Dots from "../components/icons/Dots.vue";
 import Add from "../components/icons/Add.vue";
 import { faker } from "@faker-js/faker/locale/en";
 import { ref } from "vue";
-
-const gen = () => {
-    return Math.floor(Math.random() * 100) + 100;
-};
 
 const group_data = ref([]);
 for (let i = 0; i < 3; i++) {
@@ -18,9 +13,12 @@ for (let i = 0; i < 3; i++) {
     });
     // insert 3-4 members
     for (let j = 0; j < Math.floor(Math.random() * 2) + 3; j++) {
+        const name = faker.person.fullName();
+        const first_letter = name.split(" ")[0][0];
+        const second_letter = name.split(" ")[1][0];
         group_data.value[i].group_users.push({
-            user_image: "https://placewaifu.com/image/" + gen(),
-            user_name: faker.person.fullName(),
+            user_image: `https://ui-avatars.com/api/?name=${first_letter}+${second_letter}`,
+            user_name: name,
         });
     }
 }

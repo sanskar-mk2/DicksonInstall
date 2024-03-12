@@ -2,6 +2,7 @@
 import SearchBar from "../components/SearchBar.vue";
 import Dots from "../components/icons/Dots.vue";
 import Add from "../components/icons/Add.vue";
+import { gen } from "../utils/images";
 </script>
 <template>
     <main class="w-full">
@@ -17,11 +18,7 @@ import Add from "../components/icons/Add.vue";
         </div>
         <div class="flex gap-4 px-8 flex-wrap">
             <div class="w-96 flex shadow border p-4 relative">
-                <img
-                    src="https://placewaifu.com/image/144"
-                    alt="report"
-                    class="h-20 w-20 rounded"
-                />
+                <img :src="gen()" alt="report" class="h-20 w-20 rounded" />
                 <div class="absolute right-2 top-2">
                     <Dots />
                 </div>

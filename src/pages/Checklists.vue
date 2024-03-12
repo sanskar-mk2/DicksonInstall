@@ -32,12 +32,12 @@ import SearchBar from "../components/SearchBar.vue";
                 <tbody>
                     <tr>
                         <td class="font-semibold text-lg">
-                            Dayal Paradise Chauraha
+                            Big Building - 800 Street
                         </td>
                         <td>Todo List</td>
                         <td>
                             <img
-                                src="https://placewaifu.com/image/100"
+                                src="https://ui-avatars.com/api/?name=S+T"
                                 alt="user"
                                 class="rounded-full w-6 h-6"
                             />

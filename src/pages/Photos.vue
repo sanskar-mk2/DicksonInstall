@@ -2,18 +2,18 @@
 import ArrowDown from "../components/icons/ArrowDown.vue";
 import { faker } from "@faker-js/faker/locale/en";
 import { ref } from "vue";
-
-const gen = () => {
-    return Math.floor(Math.random() * 100) + 100;
-};
+import { gen } from "../utils/images";
 
 const photoCardData = ref([]);
 for (let i = 0; i < 6; i++) {
+    const name = faker.person.fullName();
+    const first_letter = name.split(" ")[0][0];
+    const second_letter = name.split(" ")[1][0];
     photoCardData.value.push({
-        main_img: "https://placewaifu.com/image/" + gen(),
+        main_img: gen(),
         address_title: faker.company.name(),
-        name: faker.person.fullName(),
-        user_image: "https://placewaifu.com/image/" + gen(),
+        name: name,
+        user_image: `https://ui-avatars.com/api/?name=${first_letter}+${second_letter}`,
     });
 }
 </script>
@@ -77,14 +77,16 @@ for (let i = 0; i < 6; i++) {
                         </div>
                         <div class="flex flex-col">
                             <p
-                                class="font-semibold text-md  w-40 overflow-ellipsis whitespace-nowrap overflow-hidden"
+                                class="font-semibold text-md w-40 overflow-ellipsis whitespace-nowrap overflow-hidden"
                                 v-text="photo.address_title"
                             ></p>
                             <p class="flex gap-1 items-center w-40">
-                                <span class="whitespace-nowrap text-xs">6:00 PM</span>
+                                <span class="whitespace-nowrap text-xs"
+                                    >6:00 PM</span
+                                >
                                 <span>•</span>
                                 <span
-                                    class="text-xs  overflow-ellipsis whitespace-nowrap overflow-hidden"
+                                    class="text-xs overflow-ellipsis whitespace-nowrap overflow-hidden"
                                     v-text="photo.name"
                                 ></span>
                             </p>

@@ -41,7 +41,7 @@ defineProps({
     >
         <div class="flex justify-between items-center gap-4 w-full">
             <div class="flex items-center gap-2">
-                <img :src="main_img" alt="Project Image" class="h-32 w-32" />
+                <img :src="main_img" alt="Project Image" class="h-32 w-32 object-cover" />
                 <div class="prose flex flex-col">
                     <h4 v-text="address_title" class="font-semibold"></h4>
                     <h5 v-text="address_subtitle" class="text-gray-500"></h5>
@@ -67,7 +67,7 @@ defineProps({
                             :key="user"
                             :src="user"
                             alt="Recent User"
-                            class="rounded-full h-8 w-8"
+                            class="rounded-full h-8 w-8 object-cover"
                         />
                     </p>
                 </div>
@@ -76,7 +76,7 @@ defineProps({
 
         <div class="flex gap-2">
             <div v-for="link in image_links" :key="link" class="h-32 w-32">
-                <img :src="link" alt="Project Image" class="h-32 w-32" />
+                <img :src="link" alt="Project Image" class="h-32 w-32 object-cover" />
             </div>
         </div>
     </div>
